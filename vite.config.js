@@ -39,9 +39,13 @@ export default defineConfig({
       process: 'process/browser',
       util: "util/",
        events: "events/",
+      path: "path-browserify",
+      qs: "qs",
       "rollup-plugin-node-polyfills/polyfills/util": "util/",
       "rollup-plugin-node-polyfills/polyfills/events": "events/",
       "rollup-plugin-node-polyfills/polyfills/stream": "stream-browserify",
+      "rollup-plugin-node-polyfills/polyfills/path": "path-browserify",
+      "rollup-plugin-node-polyfills/polyfills/qs": "qs",
       
     },
   },
