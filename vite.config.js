@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import polyfillNode from "rollup-plugin-polyfill-node";
+
 
 // https://vite.dev/config/
 // Polyfill Node.js globals and modules for browser
@@ -7,7 +9,14 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), polyfillNode()],
+
+  build: {
+    rollupOptions: {
+      plugins: [polyfillNode()],
+    },
+  },
+
   optimizeDeps: {
     esbuildOptions: {
       define: {
@@ -20,12 +29,20 @@ export default defineConfig({
         NodeModulesPolyfillPlugin()
       ]
     }
+    
   },
+
   resolve: {
     alias: {
       buffer: 'buffer',
       stream: 'stream-browserify',
       process: 'process/browser',
+      util: "util/",
+       events: "events/",
+      "rollup-plugin-node-polyfills/polyfills/util": "util/",
+      "rollup-plugin-node-polyfills/polyfills/events": "events/",
+      "rollup-plugin-node-polyfills/polyfills/stream": "stream-browserify",
+      
     },
   },
 });
