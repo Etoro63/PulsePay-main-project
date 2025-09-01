@@ -18,6 +18,11 @@ export default defineConfig({
   },
 
   optimizeDeps: {
+    include: ["util", "assert", "process", "buffer",
+      "stream-browserify",
+      "path-browserify",
+      "events",
+    ],
     esbuildOptions: {
       define: {
         global: 'globalThis',
@@ -35,12 +40,15 @@ export default defineConfig({
   resolve: {
     alias: {
       buffer: 'buffer',
+      util: "util", // <-- Ensure this line is present
+      // ...other aliases...
       stream: 'stream-browserify',
       process: 'process/browser',
-      util: "util/",
-       events: "events/",
+     
+      events: "events/",
       path: "path-browserify",
       qs: "qs",
+      assert: "assert",
       punycode: "punycode/",
       url: "url/",
       "string_decoder": "string_decoder/",
