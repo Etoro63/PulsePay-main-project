@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import '../index.css';
 import CreatePlanPopup from '../Components/CreatePlanPopup';
 
@@ -69,7 +69,6 @@ export default function Home() {
 
   const paragraph =
     "Create, manage, and subscribe to decentralized services with gasless transactions and secure blockchain payments.";
-  const intervalRef = useRef();
 
   // Animated typing effect for the paragraph, loops infinitely, slower and smoother
   useEffect(() => {
